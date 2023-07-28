@@ -1,0 +1,64 @@
+{
+  "name": "coding-dojo-backend",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "coding-dojo-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/coding-dojo-backend",
+        "main": "coding-dojo-backend/src/main.ts",
+        "tsConfig": "coding-dojo-backend/tsconfig.app.json",
+        "assets": ["coding-dojo-backend/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "coding-dojo-backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "coding-dojo-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "coding-dojo-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "coding-dojo-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["coding-dojo-backend/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "coding-dojo-backend/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,33 @@
+{
+  "name": "coding-dojo-frontend-e2e",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "coding-dojo-frontend-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "coding-dojo-frontend-e2e/cypress.config.ts",
+        "devServerTarget": "coding-dojo-frontend:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "coding-dojo-frontend:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "coding-dojo-frontend:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["coding-dojo-frontend-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["coding-dojo-frontend"]
+}
