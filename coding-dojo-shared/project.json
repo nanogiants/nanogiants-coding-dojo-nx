@@ -1,0 +1,34 @@
+{
+  "name": "coding-dojo-shared",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "coding-dojo-shared/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/coding-dojo-shared",
+        "main": "coding-dojo-shared/src/index.ts",
+        "tsConfig": "coding-dojo-shared/tsconfig.lib.json",
+        "assets": ["coding-dojo-shared/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["coding-dojo-shared/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["coverage/coding-dojo-shared"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../coverage/coding-dojo-shared"
+      }
+    }
+  },
+  "tags": []
+}

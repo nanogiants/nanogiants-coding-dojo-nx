@@ -1883,7 +1883,7 @@
     resolve.exports "1.1.0"
     tslib "^2.3.0"
 
-"@nx/js@16.5.5":
+"@nx/js@16.5.5", "@nx/js@^16.5.5":
   version "16.5.5"
   resolved "https://registry.yarnpkg.com/@nx/js/-/js-16.5.5.tgz#751bcfdc5f4ce5eec3825453eaf00a3ff3fe592b"
   integrity sha512-pJaCmPiRnN/lnH9VsIzS1Qlpe2p14dNGgXfkonbflMr8qtzqT5izwBrojQYtUlhV6hAXuacT8AdUZlgK+y/d3g==
